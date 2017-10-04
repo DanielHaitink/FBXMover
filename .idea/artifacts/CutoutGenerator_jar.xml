@@ -1,0 +1,8 @@
+<component name="ArtifactManager">
+  <artifact type="jar" name="CutoutGenerator:jar">
+    <output-path>$PROJECT_DIR$/bin</output-path>
+    <root id="archive" name="CutoutGenerator.jar">
+      <element id="module-output" name="CutoutGenerator" />
+    </root>
+  </artifact>
+</component>
