@@ -6,7 +6,7 @@ import java.util.zip.GZIPInputStream;
 import java.util.zip.GZIPOutputStream;
 
 public final class Config implements Serializable {
-    private static final String FILE = "cutoutGenerator.cfg";
+    private static final String FILE = "FBXMover.cfg";
     private static Config config = null;
 
     private String directory;

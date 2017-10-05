@@ -2,7 +2,7 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://$PROJECT_DIR$/CutoutGenerator.iml" filepath="$PROJECT_DIR$/CutoutGenerator.iml" />
+      <module fileurl="file://$PROJECT_DIR$/FBXMover.iml" filepath="$PROJECT_DIR$/FBXMover.iml" />
     </modules>
   </component>
 </project>

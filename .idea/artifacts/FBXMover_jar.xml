@@ -1,0 +1,8 @@
+<component name="ArtifactManager">
+  <artifact type="jar" name="FBXMover:jar">
+    <output-path>$PROJECT_DIR$/bin</output-path>
+    <root id="archive" name="FBXMover.jar">
+      <element id="module-output" name="FBXMover" />
+    </root>
+  </artifact>
+</component>
