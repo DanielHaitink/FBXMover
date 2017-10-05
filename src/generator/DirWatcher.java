@@ -1,6 +1,5 @@
 package generator;
 
-import javax.imageio.ImageIO;
 import java.io.File;
 import java.io.FileFilter;
 import java.io.IOException;
@@ -14,10 +13,11 @@ class DirWatcher implements Runnable {
 
     private static final int TIMEOUT_TIME_SEC = 30;
     private static final String MSG_WRITE_FAIL = "Failed writing to sourceFile";
+    private static final String[] OBJECT_SUFFIXES = {".fbx"};
     private static final FileFilter FILE_FILTER = new FileFilter() {
         @Override
         public boolean accept(File pathname) {
-            for (String fileSuffix: ImageIO.getReaderFileSuffixes()) {
+            for (String fileSuffix : OBJECT_SUFFIXES) {
                 if (pathname.toString().endsWith(fileSuffix))
                     return true;
             }
@@ -63,12 +63,12 @@ class DirWatcher implements Runnable {
 
         System.out.println("Run");
 
-        final File[] fileList = sourceFile.listFiles();
+        final File[] fileList = sourceFile.listFiles(FILE_FILTER);
 
         if (fileList == null)
             return;
 
-        for (File imgFile : fileList){
+        for (File imgFile : fileList) {
             if (!this.processor.isProcessed(imgFile))
                 try {
                     this.processor.process(imgFile);

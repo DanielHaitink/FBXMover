@@ -41,7 +41,7 @@ public class TargetButton extends JButton {
         chooser.setAcceptAllFileFilterUsed(false);
         chooser.setFileSelectionMode(JFileChooser.DIRECTORIES_ONLY);
 
-        if(chooser.showOpenDialog(this) == JFileChooser.APPROVE_OPTION) {
+        if (chooser.showOpenDialog(this) == JFileChooser.APPROVE_OPTION) {
             this.directory = chooser.getSelectedFile().getAbsolutePath();
             dirWatcher.setTarget(new File(this.directory));
         }

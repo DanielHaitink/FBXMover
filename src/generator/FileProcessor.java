@@ -26,38 +26,35 @@ class FileProcessor {
     }
 
     private void processFile(final File file) throws IOException {
-
-        if (!renameFile(file))
-            throw new IOException();
         moveFile(file);
     }
 
-    private boolean renameFile(File file) {
+    private String getNewFileName(File file) {
         final String name = file.getName().substring(0, file.getName().length() - 4);
         final String extension = file.getName().substring(file.getName().length() - 4);
-        final String dir = file.getParent();
 
-        // TODO: rename after moving
-        return file.renameTo(new File(dir + "/" + TimeStampGenerator.generate() + '-' + name + extension));
+        return TimeStampGenerator.generate() + '-' + name + extension;
     }
 
-    private void moveFile(File file) throws IOException {
-        Files.copy(file.toPath(), this.directory.toPath(), StandardCopyOption.REPLACE_EXISTING);
+    private File moveFile(File file) throws IOException {
+        File target = new File(this.directory.getAbsolutePath() + File.separator + getNewFileName(file));
+
+        return Files.copy(file.toPath(), target.toPath(), StandardCopyOption.REPLACE_EXISTING).toFile();
     }
 
     boolean isProcessed(File file) {
         if (this.directory == null)
             return true;
 
-        final String fileName = file.getAbsolutePath().substring(0, file.getAbsolutePath().length() - 4);
+        final String fileName = file.getName().substring(0, file.getName().length() - 4);
 
         File[] fileList = this.directory.listFiles();
 
-        if(fileList == null || fileList.length == 0)
+        if (fileList == null || fileList.length == 0)
             return false;
 
-        for (File dirFile: fileList) {
-            if (dirFile.isFile() && dirFile.getName().contains(fileName))
+        for (File dirFile : fileList) {
+            if (dirFile.isFile() && dirFile.getName().endsWith('-' + fileName + ".fbx"))
                 return true;
         }
 

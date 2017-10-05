@@ -4,7 +4,10 @@ import config.Config;
 
 import javax.swing.*;
 import java.awt.*;
-import java.awt.event.*;
+import java.awt.event.ComponentEvent;
+import java.awt.event.ComponentListener;
+import java.awt.event.WindowEvent;
+import java.awt.event.WindowListener;
 import java.io.IOException;
 
 final class Window extends JFrame {
@@ -14,22 +17,20 @@ final class Window extends JFrame {
     private DirWatcher dirWatcher;
     private Thread watchThread;
 
-    Window()
-    {
+    Window() {
         createWatcher();
         createUI();
         addListeners();
     }
 
-    private void createUI()
-    {
+    private void createUI() {
         setTitle(TITLE);
 
         setSize(Config.getWindowDimension());
         setLocation(Config.getWindowLocation());
         setDefaultCloseOperation(JFrame.DO_NOTHING_ON_CLOSE);
 
-        setLayout(new GridLayout(2,1));
+        setLayout(new GridLayout(2, 1));
 
         add(new ScanDirButton(this.dirWatcher));
         add(new TargetButton(this.dirWatcher));
@@ -43,8 +44,7 @@ final class Window extends JFrame {
         this.watchThread.start();
     }
 
-    private void addListeners()
-    {
+    private void addListeners() {
         addWindowListener(new WindowListener() {
             @Override
             public void windowOpened(WindowEvent e) {
@@ -105,8 +105,7 @@ final class Window extends JFrame {
         });
     }
 
-    private void close()
-    {
+    private void close() {
         dispose();
 
         try {
