@@ -57,6 +57,10 @@ class DirWatcher implements Runnable {
         }
     }
 
+    void forceFindNewFiles() {
+        findNewFiles();
+    }
+
     private void findNewFiles() {
         if (sourceFile == null || targetFile == null)
             return;

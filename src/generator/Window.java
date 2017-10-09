@@ -30,10 +30,11 @@ final class Window extends JFrame {
         setLocation(Config.getWindowLocation());
         setDefaultCloseOperation(JFrame.DO_NOTHING_ON_CLOSE);
 
-        setLayout(new GridLayout(2, 1));
+        setLayout(new GridLayout(3, 1));
 
         add(new ScanDirButton(this.dirWatcher));
         add(new TargetButton(this.dirWatcher));
+        add(new ForceScanButton(this.dirWatcher));
 
         setVisible(true);
     }
